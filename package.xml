@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>basestation</name>
+  <version>0.0.1</version>
+  <description>Basestaion package to display status of four wheel drive+steer rover </description>
+  <maintainer email="44454593+Spacedays@users.noreply.github.com">spacedays</maintainer>
+  <license>Apache-2.0</license>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>python3-msgpack</exec_depend>
+  <exec_depend>python3-serial</exec_depend>
+  <exec_depend>python3-qtpy</exec_depend>
+  <exec_depend>python3-pyside6</exec_depend>
+  <exec_depend>python3-pyqtgraph</exec_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
