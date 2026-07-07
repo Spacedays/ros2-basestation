@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-from time import perf_counter
+# from time import perf_counter
+import signal
+import sys
 from typing import Dict, Tuple
 
 import numpy as np
@@ -7,17 +9,13 @@ import numpy as np
 # import pyjoystick
 import pyqtgraph as pg
 import rclpy
-from rclpy import logging
 
 # from pyjoystick.sdl2 import Joystick, Key, run_event_loop
 from pyqtgraph import PlotDataItem, PlotWidget
 from qtpy import QtCore, QtWidgets
-from qtpy.QtCore import QThreadPool, QRunnable, Slot
+from qtpy.QtCore import QRunnable, QThreadPool, Slot
 from qtpy.QtWidgets import QApplication
-
-# from rclpy.node import Node
-from sensor_msgs.msg import Joy
-from std_msgs.msg import String
+from rclpy import logging
 
 # from simple_msgpack_console import WrapMsgPack, get_data_packet, parse_messages, rxQueue
 from basestation.console import PicoConsoleWidget
@@ -180,7 +178,6 @@ class ControlWindow(QtWidgets.QWidget):
         for idx, name in enumerate(names_list[: len(self.data)]):
             self.legend.addItem(self.lines[idx], name)
 
-    # #TODO: replace with ROS subscriber (& publisher?)
     def startcontrol(self, state=False):
         """If a gamepad is connected, start updating the UI and controller objects"""
         if self.running:
@@ -216,7 +213,7 @@ class ControlWindow(QtWidgets.QWidget):
         # Updates GUI motion displays using current control packet information
 
         d, h = calc_steer_center(self.ctrlpacket.ljx, self.ctrlpacket.ljy)
-        logging.get_logger("basestation_gui").info(f"{d},{h}")
+        # logging.get_logger("basestation_gui").debug(f"{d},{h}")
         mvec = calc_motion_vec(self.ctrlpacket, d, h)
         # print(self.ctrlpacket,d,h,mvec)
         angles = mvec.aFL, mvec.aFR, mvec.aBL, mvec.aBR
@@ -224,7 +221,6 @@ class ControlWindow(QtWidgets.QWidget):
         angles = wheel_angles_to_pg(*angles)
         # self.update_motion_vector(mvec.aFL, mvec.aFR, mvec.aBL, mvec.aBR, (d, h))
         self.update_motion_vector(*angles, (d, h))
-
 
     def update_plot(
         self,
@@ -275,24 +271,30 @@ class RosWorker(QRunnable):
             logging.get_logger("basestation_gui").error(f"Console Node interrupted! {e}")
 
 
-# LATER: could move ROS spinning to a seperate thread
+def sigint_handler(*args):
+    """Handler for the SIGINT signal."""
+    sys.stderr.write("\r")
+    logging.get_logger("basestation_gui").warning("Application closed by user.")
+    QApplication.quit()
+
+
+if __name__ == "__main__":
+    signal.signal(signal.SIGINT, sigint_handler)
+    app = QApplication(sys.argv)
+    timer = QtCore.QTimer()
+    timer.start(500)
+    timer.timeout.connect(lambda: None)  # Let the interpreter run each 500 ms to allow observing sigint
 
 
 def main():
-    import sys
-
     # import cProfile           # DEBUG profiling
     # import pstats
     # profiler = cProfile.Profile()
     # profiler.enable()
     rclpy.init(args=sys.argv)
     app = QApplication(sys.argv)
+    signal.signal(signal.SIGINT, signal.SIG_DFL)
 
-    # w = PicoConsoleWidget()
-
-    # try:
-    #  g = Gamepad()
-    #  w = MainWindow(g)
     w = ControlWindow()
     w.show()
 

@@ -10,6 +10,7 @@ class PicoConsoleWidget(QtWidgets.QWidget):
         super(PicoConsoleWidget, self).__init__(parent)
 
         self.message_le = QtWidgets.QLineEdit()
+        self.message_le.returnPressed.connect(self.send)
         self.send_btn = QtWidgets.QPushButton(text="Send", clicked=self.send)
         self.output_te = QtWidgets.QTextEdit(readOnly=True)
         self.button = QtWidgets.QPushButton(
@@ -47,6 +48,7 @@ class PicoConsoleWidget(QtWidgets.QWidget):
     def send(self):
         for listener_fxn in self.listeners:
             listener_fxn(self.message_le.text())
+        self.receive("> " + self.message_le.text())
         self.message_le.clear()
 
     # @QtCore.pyqtSlot(bool)

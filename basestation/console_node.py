@@ -20,6 +20,8 @@ from basestation.pico_shim import (
 # calc_steer_center,
 
 log = logging.get_logger("basestation_gui")
+
+
 class ConsoleNode(Node):
     """Main interface node for the Core Rover. It subscribes to joystick inputs and sends msgpack serial control packets to the MCU."""
 
@@ -45,7 +47,7 @@ class ConsoleNode(Node):
     def add_joy_listener(self, listener_fxn: Callable[[ControlPacket], None]):
         self.joy_listeners.append(listener_fxn)
 
-    def joy_callback(self, data:Joy):
+    def joy_callback(self, data: Joy):
         # log.info(f"joy - {data.axes}\t{data.buttons}")
         self.packet.a = data.buttons[0]
         self.packet.b = data.buttons[1]
