@@ -1,62 +1,75 @@
 <mxfile host="65bd71144e">
     <diagram id="-OHKlUU1IfkW14FNFa8f" name="Page-1">
-        <mxGraphModel dx="256" dy="576" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="460" dy="654" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="3" value="basestation_gui" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                <mxCell id="3" value="basestation_gui" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
                     <mxGeometry x="20" y="100" width="115" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
-                    <mxGeometry x="250" y="200" width="120" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="6" value="" style="edgeStyle=none;rounded=1;html=1;" edge="1" parent="1" source="4" target="5">
+                <mxCell id="6" value="" style="edgeStyle=none;rounded=1;html=1;" parent="1" source="4" target="5" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="4" value="main" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                <mxCell id="4" value="main" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
                     <mxGeometry x="60" y="180" width="110" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="8" value="" style="edgeStyle=none;rounded=1;html=1;" edge="1" parent="1" source="5" target="7">
+                <mxCell id="8" value="" style="edgeStyle=none;rounded=1;html=1;" parent="1" source="5" target="7" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="5" value="rclpy init" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                <mxCell id="5" value="rclpy init" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
                     <mxGeometry x="60" y="220" width="110" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="10" value="" style="edgeStyle=none;rounded=1;html=1;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7" target="9">
+                <mxCell id="10" value="" style="edgeStyle=none;rounded=1;html=1;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" parent="1" source="7" target="9" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="16" style="edgeStyle=none;rounded=1;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7" target="15">
+                <mxCell id="16" style="edgeStyle=none;rounded=1;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="7" target="15" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="7" value="ControlWindow init" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+                <mxCell id="7" value="ControlWindow init" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
                     <mxGeometry x="60" y="260" width="110" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="9" value="Make GUI &amp;amp; Console Node" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                <mxCell id="9" value="Make GUI &amp;amp; Console Node" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
                     <mxGeometry x="150" y="310" width="110" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="15" value="app.exec()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                <mxCell id="15" value="app.exec()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
                     <mxGeometry x="60" y="350" width="110" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="17" value="Timed Operations" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-                    <mxGeometry x="80" y="380" width="110" height="20" as="geometry"/>
+                <mxCell id="17" value="Timed Operations" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+                    <mxGeometry x="32.5" y="490" width="110" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="18" value="control_update" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-                    <mxGeometry x="100" y="410" width="110" height="20" as="geometry"/>
+                <mxCell id="18" value="control_update" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="32.5" y="520" width="110" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="19" value="plot_update" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-                    <mxGeometry x="100" y="440" width="110" height="20" as="geometry"/>
+                <mxCell id="19" value="plot_update" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="32.5" y="550" width="110" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="20" value="actually update gui" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-                    <mxGeometry x="230" y="435" width="110" height="30" as="geometry"/>
+                <mxCell id="20" value="Update the gui with current control packet values" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="480" y="475" width="270" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="21" value="ros_update" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-                    <mxGeometry x="100" y="470" width="110" height="20" as="geometry"/>
+                <mxCell id="21" value="rclpy.spin(self.node)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="450" width="110" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="22" value="update ctrl vector display" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-                    <mxGeometry x="230" y="400" width="150" height="30" as="geometry"/>
+                <mxCell id="22" value="update calculations + display of control vectors" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="480" y="445" width="260" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="23" value="update ros" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-                    <mxGeometry x="230" y="470" width="110" height="20" as="geometry"/>
+                <mxCell id="24" value="PyQt (main thread)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="22.5" y="420" width="110" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="Ros Thread" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;arcSize=50;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="420" width="110" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;elbow=vertical;curved=1;startArrow=classic;startFill=1;" edge="1" parent="1" source="30" target="21">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="210" y="530" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="32" value="messages to &amp;amp;&lt;div&gt;from core rover&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="31">
+                    <mxGeometry x="-0.0492" y="-1" relative="1" as="geometry">
+                        <mxPoint y="19" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="30" value="Terminal interface" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                    <mxGeometry x="32.5" y="450" width="110" height="20" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

@@ -5,10 +5,6 @@ from asyncio import Queue
 from dataclasses import dataclass
 from math import atan, pi, tan
 
-import msgpack
-import serial
-import serial.tools.list_ports
-
 #
 """
 This file acts as a shim to emulate some of the functionality the rover does.
@@ -103,47 +99,6 @@ class MotionVector:
             self.aBL,
             self.aBR,
         )
-
-
-class PicoSerial:
-    def __init__(self, queue: Queue, portname: str = None, baudrate: int = 115200) -> None:
-        self.q = queue  # TODO read q
-        self.port = None
-        # self.baudrate = baudrate
-
-        if portname is None:
-            portname = PicoSerial.find_pico()
-
-        self.port = serial.Serial(portname, baudrate, timeout=1)
-
-    @classmethod
-    def find_pico(cls, searchstr="pico"):
-        pico_ports = []
-        pico_desc = []
-        for portname, desc, hwid in serial.tools.list_ports.comports():
-            if searchstr in (desc.lower() + hwid):
-                pico_ports.append(portname)
-                pico_desc.append(f"{desc} ; {hwid}")
-
-        if not pico_ports:
-            raise FileNotFoundError("No pico serial ports found!")
-        elif len(pico_ports) > 1:
-            serlog.warning(f"Other picos found! Returning first device {pico_ports[0]} ; {pico_desc[0]}")
-        return pico_ports[0]
-
-    def write(self, data):
-        print("Writing ", data)  # DEBUG print
-        self.port.write(data)
-
-    def readline(self, *args):
-        return self.port.readline(*args)
-
-    def read(self, *args):
-        return self.port.read(*args)
-
-    def send_control_packet(self, packet: ControlPacket):
-        pass
-
 
 def calc_steer_center(joyx, joyy):
     jx = joyx

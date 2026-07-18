@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # from time import perf_counter
+import os
 import signal
 import sys
 from typing import Dict, Tuple
@@ -213,7 +214,7 @@ class ControlWindow(QtWidgets.QWidget):
         # Updates GUI motion displays using current control packet information
 
         d, h = calc_steer_center(self.ctrlpacket.ljx, self.ctrlpacket.ljy)
-        # logging.get_logger("basestation_gui").debug(f"{d},{h}")
+        # log.debug(f"{d},{h}")
         mvec = calc_motion_vec(self.ctrlpacket, d, h)
         # print(self.ctrlpacket,d,h,mvec)
         angles = mvec.aFL, mvec.aFR, mvec.aBL, mvec.aBR
@@ -256,6 +257,13 @@ class ControlWindow(QtWidgets.QWidget):
         # print("FPS:", 1 / (time.time() - self.start_t))
         # self.start_t = time.time()  # DEBUG perftimer
 
+    def closeEvent(self, event):
+        log.warning("Application closed by user.")
+        # rclpy.get_global_executor().shutdown(3)
+        rclpy.shutdown()
+        os.kill(os.getpid(), signal.SIGINT) #TODO: check if this closes hardware correctly ((probably not)
+        return super().closeEvent(event)
+
 
 class RosWorker(QRunnable):
     # errs = pyqtSignal(str)
@@ -268,13 +276,14 @@ class RosWorker(QRunnable):
         try:
             rclpy.spin(self.node)
         except Exception as e:
-            logging.get_logger("basestation_gui").error(f"Console Node interrupted! {e}")
+            log.error(f"Console Node interrupted! {e}")
+        self.node = None
 
 
 def sigint_handler(*args):
     """Handler for the SIGINT signal."""
     sys.stderr.write("\r")
-    logging.get_logger("basestation_gui").warning("Application closed by user.")
+    log.warning("Application closed by user.")
     QApplication.quit()
 
 
@@ -287,22 +296,27 @@ if __name__ == "__main__":
 
 
 def main():
-    # import cProfile           # DEBUG profiling
-    # import pstats
-    # profiler = cProfile.Profile()
-    # profiler.enable()
-    rclpy.init(args=sys.argv)
-    app = QApplication(sys.argv)
-    signal.signal(signal.SIGINT, signal.SIG_DFL)
+    try:
+        # import cProfile           # DEBUG profiling
+        # import pstats
+        # profiler = cProfile.Profile()
+        # profiler.enable()
+        rclpy.init(args=sys.argv)
+        app = QApplication(sys.argv)
+        signal.signal(signal.SIGINT, signal.SIG_DFL)
 
-    w = ControlWindow()
-    w.show()
+        w = ControlWindow()
+        w.show()
 
-    app.exec()
+        app.exec()
 
-    # profiler.disable()
-    # stats = pstats.Stats(profiler)
-    # stats.sort_stats("cumulative").print_stats(10)  # Print top 10 functions by cumulative time
+        # profiler.disable()
+        # stats = pstats.Stats(profiler)
+        # stats.sort_stats("cumulative").print_stats(10)  # Print top 10 functions by cumulative time
+    except KeyboardInterrupt:
+        pass
+    except Exception as e:
+        log.error(f"Exception: {e}")
 
 
 if __name__ == "__main__":
